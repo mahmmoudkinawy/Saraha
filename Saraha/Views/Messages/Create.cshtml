@@ -1,0 +1,21 @@
+﻿@model Message
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <div class="row col-12">
+        <form method="post">
+            <h1 class="text-primary">Create Message</h1>
+            <label asp-for="Content"></label>
+            <input asp-for="Content" class="form-control" />
+            <span asp-validation-for=Content class="text-danger"></span>
+            <hr />
+            <button class="btn btn-primary" type="submit" asp-action="Create">Send</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+<partial name="_ValidationScriptsPartial" />
+}

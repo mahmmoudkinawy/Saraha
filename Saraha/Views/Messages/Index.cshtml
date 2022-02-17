@@ -3,6 +3,10 @@
     ViewData["Title"] = "Messages";
 }
 
+<h2>@TempData["success"]</h2>
+
+<a class="btn btn-primary" asp-action="Create">Create Message</a>
+<hr />
 @foreach (var message in Model)
 {
     <h1>@message.Content</h1>
