@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Message>
+@{
+    ViewData["Title"] = "Messages";
+}
+
+@foreach (var message in Model)
+{
+    <h1>@message.Content</h1>
+    <br />
+    <h3>@message.Created.ToShortDateString()</h3>
+}
