@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Saraha.Models;
+﻿namespace Saraha.Models;
 public class Message
 {
     public int Id { get; set; }

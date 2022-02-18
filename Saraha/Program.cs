@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Identity.UI.Services;
-using Saraha.Services;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -47,7 +44,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Messages}/{action=Create}/{userPublicId}");
+    pattern: "{controller=Messages}/{action=Create}/{userPublicId?}");
 
 app.MapRazorPages();
 

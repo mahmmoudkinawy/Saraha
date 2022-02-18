@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-
-namespace Saraha.Controllers;
+﻿namespace Saraha.Controllers;
 public class MessagesController : Controller
 {
     private readonly SarahaContext _context;
@@ -8,7 +6,13 @@ public class MessagesController : Controller
     public MessagesController(SarahaContext context) => _context = context;
 
     [Authorize]
-    public IActionResult Index() => View(_context.Messages.ToList());
+    public IActionResult Index()
+    {
+        var claimsIdentity = (ClaimsIdentity)User.Identity;
+        var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        return View(_context.Messages.Where(m => m.AppUserId == claim).ToList());
+    }
 
     public IActionResult Create(string userPublicId)
         => View(new Message
