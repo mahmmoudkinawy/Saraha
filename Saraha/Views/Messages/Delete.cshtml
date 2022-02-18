@@ -7,7 +7,7 @@
     <input asp-for="Id" hidden />
     <h1 class="text-danger">Delete Message</h1>
     <label asp-for="Content"></label>
-    <input asp-for="Content" class="form-control" disabled />
+    <textarea class="form-control" asp-for="Content" rows="5" readonly></textarea>
     <hr />
     <button class="btn btn-danger" type="submit">Delete</button>
 </form>
