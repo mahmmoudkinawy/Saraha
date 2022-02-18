@@ -23,7 +23,7 @@ public class MessagesController : BaseController
         if (ModelState.IsValid)
         {
             message.AppUserId = userPublicId;
-            message.Created = DateTime.Now;
+            message.Created = DateTime.UtcNow;
 
             _context.Messages.Add(message);
             _context.SaveChanges();
