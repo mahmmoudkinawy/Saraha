@@ -3,22 +3,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<SarahaContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddIdentityServices();
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddDefaultTokenProviders()
-    .AddEntityFrameworkStores<SarahaContext>();
-//.AddDefaultUI();
-
-builder.Services.ConfigureApplicationCookie(options =>
-{
-    options.LoginPath = "/Identity/Account/Login";
-    options.LogoutPath = "/Identity/Account/Logout";
-    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
-});
-
-builder.Services.AddScoped<IEmailSender, EmailSender>();
+builder.Services.AddApplicationServices(builder.Configuration);
 
 builder.Services.AddRazorPages();
 

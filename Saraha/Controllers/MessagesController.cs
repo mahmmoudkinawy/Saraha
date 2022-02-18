@@ -1,5 +1,5 @@
 ﻿namespace Saraha.Controllers;
-public class MessagesController : Controller
+public class MessagesController : BaseController
 {
     private readonly SarahaContext _context;
 
@@ -7,12 +7,8 @@ public class MessagesController : Controller
 
     [Authorize]
     public IActionResult Index()
-    {
-        var claimsIdentity = (ClaimsIdentity)User.Identity;
-        var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
-        return View(_context.Messages.Where(m => m.AppUserId == claim).ToList());
-    }
+        => View(_context.Messages
+                .Where(m => m.AppUserId.Equals(User.GetUserNameIdentifier())).ToList());
 
     public IActionResult Create(string userPublicId)
         => View(new Message
