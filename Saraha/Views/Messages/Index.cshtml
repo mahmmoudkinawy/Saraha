@@ -9,7 +9,11 @@
 <hr />
 @foreach (var message in Model)
 {
-    <h1>@message.Content</h1>
+    <h2>@message.Content</h2>
     <br />
-    <h3>@message.Created.ToShortDateString()</h3>
+    <h3>@message.Created.ToLongDateString()</h3>
+    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@message.Id">
+        Delete
+    </a>
+    <br />
 }

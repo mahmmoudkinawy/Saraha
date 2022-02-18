@@ -25,6 +25,7 @@ namespace Saraha.Data.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
+                        .HasMaxLength(3000)
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Created")

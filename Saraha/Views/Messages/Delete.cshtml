@@ -1,0 +1,13 @@
+﻿@model Message
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<form method="post" asp-action="Delete">
+    <input asp-for="Id" hidden />
+    <h1 class="text-danger">Delete Message</h1>
+    <label asp-for="Content"></label>
+    <input asp-for="Content" class="form-control" disabled />
+    <hr />
+    <button class="btn btn-danger" type="submit">Delete</button>
+</form>
