@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Saraha.Models;
 public class Message
@@ -11,8 +12,10 @@ public class Message
     public DateTime Created { get; set; }
 
 
+    [ValidateNever]
     public string AppUserId { get; set; }
     
     [ForeignKey("AppUserId")]
+    [ValidateNever]
     public AppUser AppUser { get; set; }
 }

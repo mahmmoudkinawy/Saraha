@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
 namespace Saraha.Controllers;
-
 public class MessagesController : Controller
 {
     private readonly SarahaContext _context;
@@ -11,20 +10,25 @@ public class MessagesController : Controller
     [Authorize]
     public IActionResult Index() => View(_context.Messages.ToList());
 
-    //Get the view
-    public IActionResult Create() => View();
+    public IActionResult Create(string userPublicId)
+        => View(new Message
+        {
+            AppUserId = userPublicId
+        });
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create(Message message)
+    public IActionResult Create(string userPublicId, Message message)
     {
         if (ModelState.IsValid)
         {
+            message.AppUserId = userPublicId;
             message.Created = DateTime.Now;
+
             _context.Messages.Add(message);
             _context.SaveChanges();
             TempData["success"] = "Message Sent Successfully";
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Create));
         }
         return View();
     }
