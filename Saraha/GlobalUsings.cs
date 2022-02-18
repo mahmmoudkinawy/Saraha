@@ -12,4 +12,3 @@ global using System.ComponentModel.DataAnnotations.Schema;
 global using Microsoft.AspNetCore.Identity.UI.Services;
 global using Saraha.Services;
 global using Saraha.Extensions;
-global using Saraha.Extensions;

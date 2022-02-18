@@ -31,7 +31,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Messages}/{action=Create}/{userPublicId?}");
+    pattern: "{controller=Messages}/{action=Index}/{userPublicId?}");
 
 app.MapRazorPages();
 

@@ -49,6 +49,7 @@ public class MessagesController : BaseController
 
         _context.Messages.Remove(message);
         _context.SaveChanges();
+        TempData["success"] = "Message Deleted Successfully";
 
         return RedirectToAction(nameof(Index));
     }
