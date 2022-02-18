@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Saraha.Data;
 
@@ -10,9 +11,10 @@ using Saraha.Data;
 namespace Saraha.Data.Migrations
 {
     [DbContext(typeof(SarahaContext))]
-    partial class SarahaContextModelSnapshot : ModelSnapshot
+    [Migration("20220218114347_AddedUsersAndMessagesToDb")]
+    partial class AddedUsersAndMessagesToDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.2");

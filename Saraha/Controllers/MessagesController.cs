@@ -1,10 +1,14 @@
-﻿namespace Saraha.Controllers;
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace Saraha.Controllers;
+
 public class MessagesController : Controller
 {
     private readonly SarahaContext _context;
 
     public MessagesController(SarahaContext context) => _context = context;
 
+    [Authorize]
     public IActionResult Index() => View(_context.Messages.ToList());
 
     //Get the view
@@ -28,6 +32,7 @@ public class MessagesController : Controller
     public IActionResult Delete(int? id)
         => View(_context.Messages.Find(id));
 
+    [Authorize]
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public IActionResult DeletePOST(int? id)
